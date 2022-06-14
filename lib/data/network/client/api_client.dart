@@ -24,11 +24,10 @@ class ApiClient {
 
   Future<SearchResultResponse> search(String criteria) async {
     try {
+      final endpoint = 'https://$baseUrl/search/q=$criteria';
+
       final response = await Dio().get(
-        'https://$baseUrl/search',
-        queryParameters: {
-          'q': criteria,
-        },
+        endpoint,
         options: Options(
           headers: {
             'X-RapidAPI-Host': baseUrl,

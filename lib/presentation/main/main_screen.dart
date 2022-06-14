@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_engine/presentation/main/main_model.dart';
+import 'package:flutter_search_engine/presentation/search/search_model.dart';
 import 'package:flutter_search_engine/presentation/search/search_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -83,6 +84,10 @@ class _SearchWidgetState extends State<_SearchWidget> {
                       filled: _isSearch(model),
                     ),
                     onChanged: (String? value) => model.searchQuery = value,
+                    onFieldSubmitted: model.searchQuery != null &&
+                            model.searchQuery!.isNotEmpty
+                        ? (_) => _submit(context)
+                        : null,
                   ),
                 ),
               ),
@@ -97,11 +102,10 @@ class _SearchWidgetState extends State<_SearchWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  onPressed: model.searchQuery != null
-                      ? () => context.go(
-                            '/search/${_searchController.text}',
-                          )
-                      : null,
+                  onPressed:
+                      model.searchQuery != null && model.searchQuery!.isNotEmpty
+                          ? () => _submit(context)
+                          : null,
                   child: const Text(
                     'Search on Flugle',
                     style: TextStyle(fontSize: 20.0),
@@ -116,4 +120,10 @@ class _SearchWidgetState extends State<_SearchWidget> {
   }
 
   bool _isSearch(MainModel model) => model.isMouseOver || model.hasFocus;
+
+  void _submit(BuildContext context) {
+    context.go(
+      '/search/${_searchController.text}',
+    );
+  }
 }
