@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SearchModel extends ChangeNotifier {
+class MainModel extends ChangeNotifier {
   String? _searchQuery;
 
   String? get searchQuery => _searchQuery;

@@ -1,16 +1,17 @@
-# flutter_search_engine
+# Flutter search engine
 
-A new Flutter project.
+This is the sample project for a video and article related on how to create a search engine with Flutter.
 
-## Getting Started
+You can find the text version of the tutorial [here]().
 
-This project is a starting point for a Flutter application.
+You can find the video version of the tutorial on [Youtube]().
 
-A few resources to get you started if this is your first Flutter project:
+## How to execute this sample project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+If you try to execute this sample just after cloning it, it will fail. To fix it, create a file `lib/data.dart` with the API key obtained from [here](https://rapidapi.com/apigeek/api/google-search3/):
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+`const apiKey = 'YOUR API KEY HERE';`
+
+## Build entities
+
+`flutter pub run build_runner build`
