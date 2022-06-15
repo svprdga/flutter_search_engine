@@ -4,6 +4,7 @@ import 'package:flutter_search_engine/domain/search_result.dart';
 import 'package:flutter_search_engine/presentation/search/search_model.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SearchScreen extends StatelessWidget {
   final String criteria;
@@ -29,7 +30,7 @@ class SearchScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return _SearchResults(snapshot.data!);
           } else {
-            return Container();
+            return const LinearProgressIndicator();
           }
         },
       ),
@@ -44,19 +45,47 @@ class _SearchResults extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<ListTile> tiles = [];
+    final List<Widget> widgets = [];
 
     for (final result in results) {
-      tiles.add(
-        ListTile(
-          title: Text(result.title),
-          subtitle: Text(result.description),
+      widgets.add(
+        Container(
+          padding: const EdgeInsets.only(left: 8.0, bottom: 6.0),
+          child: Text(result.link),
+        ),
+      );
+
+      widgets.add(
+        Align(
+          alignment: Alignment.centerLeft,
+          child: TextButton(
+            onPressed: () async {
+              final uri = Uri.parse(result.link);
+              if (await canLaunchUrl(uri)) {
+                launchUrl(uri);
+              }
+            },
+            style: ButtonStyle(
+              overlayColor: MaterialStateProperty.all(Colors.transparent),
+            ),
+            child: Text(
+              result.title,
+              style: const TextStyle(fontSize: 20.0),
+            ),
+          ),
+        ),
+      );
+
+      widgets.add(
+        Container(
+          padding: const EdgeInsets.only(left: 8.0, top: 6.0, bottom: 30.0),
+          child: Text(result.description),
         ),
       );
     }
 
     return ListView(
-      children: tiles,
+      children: widgets,
     );
   }
 }

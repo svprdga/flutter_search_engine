@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_search_engine/presentation/main/main_model.dart';
-import 'package:flutter_search_engine/presentation/search/search_model.dart';
-import 'package:flutter_search_engine/presentation/search/search_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
