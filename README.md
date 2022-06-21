@@ -1,17 +1,7 @@
-# Flutter search engine
+# Create a WEB search engine with Flutter | Flutter WEB tutorial
 
-This is the sample project for a video and article related on how to create a search engine with Flutter.
+This is a Flutter tutorial for beginners where you will learn some of the basic elements of building a website with Flutter.
 
-You can find the text version of the tutorial [here]().
+There is also a video version of the tutorial on [Youtube](https://youtu.be/0q7SugDrMYM) and [Odysee](https://odysee.com/@svprdga:d/create_a_web_search_engine_with_flutter).
 
-You can find the video version of the tutorial on [Youtube]().
-
-## How to execute this sample project
-
-If you try to execute this sample just after cloning it, it will fail. To fix it, create a file `lib/data.dart` with the API key obtained from [here](https://rapidapi.com/apigeek/api/google-search3/):
-
-`const apiKey = 'YOUR API KEY HERE';`
-
-## Build entities
-
-`flutter pub run build_runner build`
+If you are interested visit my [blog](https://davidserrano.io/) to see other tutorials and articles related to mobile programming.
